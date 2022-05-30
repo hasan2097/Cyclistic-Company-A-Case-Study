@@ -1,0 +1,25 @@
+WITH temp_biketrip AS (
+    SELECT 
+        DISTINCT ride_id,    ## To return only different values
+        start_station_name,
+        end_station_name,
+        member_casual,
+        ## Using Absolut (ABS) because there are some misplaced data on the started and ended station.
+        ABS(TIMESTAMP_DIFF(ended_at,started_at, minute)) AS duration       
+    FROM `corded-terrain-344313.bikedata.tripdata_1`
+    WHERE
+        start_station_name IS NOT NULL AND end_station_name IS NOT NULL
+    
+    ORDER BY
+        duration DESC )
+
+## Average trip duration group by member
+SELECT 
+    member_casual,
+    AVG(duration) AS average_trip_duration
+FROM
+    temp_biketrip 
+GROUP BY
+    member_casual
+    
+

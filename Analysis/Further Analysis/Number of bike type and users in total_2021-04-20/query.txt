@@ -1,0 +1,8 @@
+SELECT
+  DISTINCT rideable_type,
+  member_casual,
+  SUM(number_of_user) AS number_of_user
+FROM
+  bikedata.biketype1 
+GROUP BY
+  rideable_type, member_casual

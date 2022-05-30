@@ -1,0 +1,1 @@
+The last 12 months data were merged into one data named "duration_2021_04_20"

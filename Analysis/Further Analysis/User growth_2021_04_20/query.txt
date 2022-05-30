@@ -1,0 +1,10 @@
+SELECT
+  DISTINCT month,
+  member_casual,
+  SUM(number_of_user) AS number_of_user
+FROM
+  bikedata.biketype2 
+GROUP BY
+  month, member_casual
+ORDER BY
+  month

@@ -1,0 +1,11 @@
+SELECT
+    DISTINCT rideable_type,
+    member_casual,
+    COUNT(member_casual) AS number_of_user
+FROM 
+    bikedata.tripdata_11
+WHERE 
+    rideable_type IS NOT NULL AND ## To avoid nulls
+    member_casual IS NOT NULL
+GROUP BY
+    rideable_type, member_casual
